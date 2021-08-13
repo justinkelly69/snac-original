@@ -1,0 +1,26 @@
+{
+  "name": "snac",
+  "version": "1.0.0",
+  "description": "An XML editor using JSON",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "uuid": "^3.3.2",
+    "xmldom": "^0.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinkelly69/snac.git"
+  },
+  "author": "Justin Kelly",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/justinkelly69/snac/issues"
+  },
+  "homepage": "https://github.com/justinkelly69/snac#readme"
+}
