@@ -1,5 +1,5 @@
 import { xml2snac } from './lib/xml2snac'
-import { clone, saveNode } from './lib/clone'
+import { clone, saveNode, newElement, newText } from './lib/clone'
 import { snac2xml } from './lib/snac2xml'
 
 import {
@@ -86,10 +86,16 @@ import {
     makeSpacing
 } from './lib/prefix'
 
+import {
+    isEmpty
+} from './lib/clone'
+
 export {
     xml2snac,
     clone,
     saveNode,
+    newElement,
+    newText,
     snac2xml,
     attributesLength,
     attributesOpenClose,
@@ -150,5 +156,6 @@ export {
     getPrefixString,
     getPrefixArray,
     getPrefix,
-    makeSpacing
+    makeSpacing,
+    isEmpty
 }
