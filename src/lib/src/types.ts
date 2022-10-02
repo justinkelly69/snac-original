@@ -1,5 +1,4 @@
 export type SNACNode = {
-  _: string;
   o: boolean;
   q: boolean;
 };

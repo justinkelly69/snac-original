@@ -47,8 +47,8 @@ type InputPI = {
 type InputNode = InputElement | InputText | InputCDATA | InputComment | InputPI;
 
 export const convert = (xmlDataStr: string) => {
-  const inputNode:InputNode = JSON.parse(xml2json(xmlDataStr)).elements[0] ;
-  return json2snac(inputNode)
+  const inputNode:InputElement = JSON.parse(xml2json(xmlDataStr)).elements[0] ;
+  return outputElement(inputNode)
 };
 
 export const json2snac = (element: InputNode): SNACChild => {
@@ -85,7 +85,6 @@ const outputElement = (element: InputElement): SNACElement => {
     name = element.name;
   }
   return {
-    _: "",
     S: namespace,
     N: name,
     A: outputAtts(element.attributes),
@@ -142,7 +141,6 @@ const outputAtts = (attributes: InputAttributes): SNACAttributesGroup => {
 
 const outputText = (text: InputText): SNACText => {
   return {
-    _: "",
     T: text.text,
     o: true,
     q: false,
@@ -150,17 +148,14 @@ const outputText = (text: InputText): SNACText => {
 };
 
 const outputBlankText = (): SNACText => {
-  return {
-    _: "",
-    T: "BLANK_TEXT",
-    o: true,
-    q: false,
-  };
+  return outputText({
+    type: "text",
+    text: "BLANK_TEXT"
+  })
 };
 
 const outputCDATA = (cdata: InputCDATA): SNACCDATA => {
   return {
-    _: "",
     D: cdata.cdata,
     o: true,
     q: false,
@@ -169,7 +164,6 @@ const outputCDATA = (cdata: InputCDATA): SNACCDATA => {
 
 const outputComment = (comment: InputComment): SNACComment => {
   return {
-    _: "",
     M: comment.comment,
     o: true,
     q: false,
@@ -178,7 +172,6 @@ const outputComment = (comment: InputComment): SNACComment => {
 
 const outputPI = (pi: InputPI): SNACPI => {
   return {
-    _: "",
     L: pi.name,
     B: pi.instruction,
     o: true,
